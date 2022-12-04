@@ -55,15 +55,29 @@ git clone https://github.com/AleoHQ/snarkOS.git --depth 1
 cd snarkOS
 ./build_ubuntu.sh
 cargo install --path .
-``
+```
 ### Cüzdan oluşturuyoruz
+
 ```
 snarkos account new
 ```
+
 > Cüzdanı kurulumunu yaptığınızda size verilen bilgileri kayıt etmeyi unutmayın.
 
-!! Buradaki gibi çıktı alacaksınız;
-Private Key  APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me And Use In The Next Step
+Buradaki gibi çıktı alacaksınız;
+```
+Private Key    APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me And Use In The Next Step
      View Key  AViewKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me
-      Address  aleo1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me
+      Address  aleo1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me 
+```
+## Node Başlatıyoruz
+> Aşağıdaki kodu girdiğinizde çıkan ekranda sizden cüzdanınızın Private Key'ini girmenizi istiyor.
+```
+./run-prover.sh
+```
+Bu adımda private keyimizi girdiğimizde çalışmaya başlıyor. Sonrasında blokda ödül kazanıp kazanmadığımıza explorer üzerinden cüzdan adresimizle bakabiliriz.
 
+# Explorer
+https://www.aleo.network/
+https://aleo123.io/
+https://explorer.hamp.app/
