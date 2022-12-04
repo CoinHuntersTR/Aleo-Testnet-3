@@ -82,6 +82,6 @@ Bu adımda private keyimizi girdiğimizde çalışmaya başlıyor. Sonrasında b
 ### https://aleo123.io/
 ### https://explorer.hamp.app/
 
-# Sosyal Medya Adresleri;
+# Aleo Sosyal Medya Bağlantıları
 ### [Discord](https://discord.gg/aleohq)
 ### [Twitter](https://twitter.com/AleoHQ)
