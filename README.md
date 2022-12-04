@@ -1,8 +1,6 @@
 # Stride Testnet-4 Kurulum Rehberi
 
-<img width="431" alt="stride111" src="https://user-images.githubusercontent.com/107190154/184557695-bc92418f-1eb8-4514-ae06-d89802efda9a.png">
-
-> Not: Şu an kurduğumuz direkt chain-4
+![aleotestneti](https://user-images.githubusercontent.com/111747226/205493015-7cd14371-e7cf-4c89-8fab-6e8f5ec8eacc.png)
 
 
 ### Önerilen Sistem Gereksinimleri;
@@ -23,103 +21,37 @@
   ### 4. [Digital Ocean Nasıl Kayıt olurum?](https://www.labs.pusulafinans.com/2022/08/23/digital-oceana-nasil-kayit-olabilirim/)
   ### 5. [MobaXTerm Terminal Kurulumu](https://www.labs.pusulafinans.com/2022/08/23/mobaxterm-terminal-kurulumu/)
   
-### Kuruluma başlayalım.
+## UYARI
+
+Aleo testneti PoW ve CPU ve Hashrate dayalı olduğu için, ödüllü testnet olmasına rağmen ödül kazanamayabilirsiniz. Ücretli aldığınız cihazlarda bile mining yaparken blok bulamazsanız ödüle hak kazanmayacağınızı bilin. Bu nedenle yapıp yapmamak size kalmış durumda. Bir önceki testnette katılıp hiç ödül kazanamayanlara ekip teselli ödülü vermişti. Bunu tekrar eder mi bilinmez? 
+
+### Sistem Güncellemeleri;
 
 ```
-wget -O stride.sh https://raw.githubusercontent.com/pusulafinanslabs/Stride-Testnet-4/main/stride.sh && chmod +x stride.sh && ./stride.sh
+sudo apt update
+sudo apt install make clang pkg-config libssl-dev build-essential gcc xz-utils git curl vim tmux ntp jq llvm ufw -y
 ```
 
-### Log kontrol komutundan sonra log komutu tepki vermiyorsa şu komutu girip ardından yeniden log kontrol yapın.
+### Rust Yüklüyoruz.
 
 ```
-systemctl restart systemd-journald
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source $HOME/.cargo/env
 ```
 
-### Sync Durumunuzu öğrenmek için;
+### Gerekli olan portları açıyoruz.
 
 ```
-strided status 2>&1 | jq .SyncInfo
+sudo ufw allow 4133/tcp
+sudo ufw allow 3033/tcp
 ```
 
-### Cüzdan oluşturma: (not edin kaydedin)
+### Node için gerekli olan kurulumları yapıyoruz.
+> Kodları sırasıyla giriyoruz.
 ```
-strided keys add cüzdanismi
-```
-
-### Faucet için; Discorda katılmayı unutmayın. ( https://discord.gg/ggQewkUa )
-
-### Validator Olmak İçin;
-
-```
-strided tx staking create-validator \
-  --amount 9900000ustrd \
-  --from cüzdanisminiz \
-  --commission-max-change-rate "0.01" \
-  --commission-max-rate "0.2" \
-  --commission-rate "0.07" \
-  --min-self-delegation "1" \
-  --pubkey  $(strided tendermint show-validator) \
-  --moniker nodeisminiz \
-  --chain-id=STRIDE-TESTNET-4 
-```
-
-### Explorer
-
-```
-https://stride.explorers.guru/
-```
-
-### Discorddan Role-Request Odasına Explorerdan validator linkinizi atıp rol almayı unutmayın.
-
-## Stride Önemli Komutlar
-
-### Cüzdandan cüzdana token transfer
-
-```
-strided tx bank send gönderencüzdanadresi alıcıcüzdanadresi 1000000ustrd --chain-id=STRIDE-TESTNET-4 --from cüzdanisminiz --fees=250ustrd -y
-```
-
-### Kendi validatorumuze delege etme
-
-```
-strided tx staking delegate validatorAddress 10000000ustrd --from=WalletName --chain-id=STRIDE-TESTNET-4 --gas=auto
-```
-
-### Redelege yapma
-
-```
-strided tx staking redelegate gönderenvalidatoradres alıcıvalidatoradres 1000000ustrd --chain-id=STRIDE-TESTNET-4 --from cüzdan --gas=250000 --fees=500ustrd -y
-```
-
-### Log kontrol
-
-```
-journalctl -u strided -f -o cat
-```
-
-### Sync durumu
-
-```
-curl -s localhost:16657/status | jq .result.sync_info
-```
-
-### Unjail komutu
-
-```
-strided tx slashing unjail --from=Cüzdanismi --chain-id=STRIDE-TESTNET-4 --gas-prices=0.025ustrd
-```
-
-### Node'u silmek için gerekli komut
-
-```
-sudo systemctl stop strided
-sudo systemctl disable strided
-sudo rm /etc/systemd/system/stride* -rf
-sudo rm $(which strided) -rf
-sudo rm $HOME/.stride* -rf
-sudo rm $HOME/stride -rf
-sed -i '/STRIDE_/d' ~/.bash_profile
-```
-
-### Kolay Gelsin..
-
+tmux
+git clone https://github.com/AleoHQ/snarkOS.git --depth 1
+cd snarkOS
+./build_ubuntu.sh
+cargo install --path .
+``
