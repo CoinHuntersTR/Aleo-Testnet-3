@@ -40,6 +40,7 @@ source $HOME/.cargo/env
 ```
 
 ### Gerekli olan portları açıyoruz.
+> Portları sırasıyla giriyoruz.
 
 ```
 sudo ufw allow 4133/tcp
@@ -55,3 +56,14 @@ cd snarkOS
 ./build_ubuntu.sh
 cargo install --path .
 ``
+### Cüzdan oluşturuyoruz
+```
+snarkos account new
+```
+> Cüzdanı kurulumunu yaptığınızda size verilen bilgileri kayıt etmeyi unutmayın.
+
+!! Buradaki gibi çıktı alacaksınız;
+Private Key  APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me And Use In The Next Step
+     View Key  AViewKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me
+      Address  aleo1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me
+
