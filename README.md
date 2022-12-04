@@ -78,6 +78,6 @@ Private Key    APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save M
 Bu adımda private keyimizi girdiğimizde çalışmaya başlıyor. Sonrasında blokda ödül kazanıp kazanmadığımıza explorer üzerinden cüzdan adresimizle bakabiliriz.
 
 # Explorer
-https://www.aleo.network/
-https://aleo123.io/
-https://explorer.hamp.app/
+### https://www.aleo.network/
+### https://aleo123.io/
+### https://explorer.hamp.app/
