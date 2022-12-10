@@ -1,4 +1,4 @@
-# Stride Testnet-4 Kurulum Rehberi
+# Aleo Testnet Kurulum Rehberi
 
 ![aleotestneti](https://user-images.githubusercontent.com/111747226/205493015-7cd14371-e7cf-4c89-8fab-6e8f5ec8eacc.png)
 
